@@ -68,5 +68,5 @@ else
 left = height(tree->left);
 }
 
-return ((left - right) +1);
+return (left - right);
 }
