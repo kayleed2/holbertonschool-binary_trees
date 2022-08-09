@@ -52,24 +52,24 @@ int minValue(const binary_tree_t *root)
 
 int binary_tree_is_bst(const binary_tree_t *tree)
 {
-  if (tree == NULL)
-  {
-    return(1);
-  }
+if (tree == NULL)
+{
+return(1);
+}
 
-  if (tree->left!= NULL && maxValue(tree->left) > tree->n)
-  {
-    return(0);
-  }
+if (tree->left!= NULL && maxValue(tree->left) > tree->n)
+{
+return(0);
+}
 
-  if (tree->right!= NULL && minValue(tree->right) < tree->n)
-  {
-    return(0);
-  }
+if (tree->right!= NULL && minValue(tree->right) < tree->n)
+{
+return(0);
+}
 
-  if (!binary_tree_is_bst(tree->left) || !binary_tree_is_bst(tree->right))
-  {
-    return(0);
-  }
-  return(1);
+if (!binary_tree_is_bst(tree->left) || !binary_tree_is_bst(tree->right))
+{
+return(0);
+}
+return(1);
 }
