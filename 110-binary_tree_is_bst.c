@@ -8,16 +8,17 @@
  */
 int maxValue(const binary_tree_t *root)
 {
-    // Base case
+  int res, lres, rres;
+    
     if (root == NULL)
         return INT_MIN;
  
     // Return maximum of 3 values:
     // 1) Root's data 2) Max in Left Subtree
     // 3) Max in right subtree
-    int res = root->n;
-    int lres = maxValue(root->left);
-    int rres = maxValue(root->right);
+    res = root->n;
+    lres = maxValue(root->left);
+    rres = maxValue(root->right);
     if (lres > res)
         res = lres;
     if (rres > res)
@@ -32,21 +33,18 @@ int maxValue(const binary_tree_t *root)
  */
 int minValue(const binary_tree_t *root)
 {
-    // Base case
-    if (root == NULL)
-      return INT_MAX;
+  int res, lres, rres;
+  if (root == NULL)
+    return INT_MAX;
  
-    // Return minimum of 3 values:
-    // 1) Root's data 2) Max in Left Subtree
-    // 3) Max in right subtree
-    int res = root->n;
-    int lres = minValue(root->left);
-    int rres = minValue(root->right);
-    if (lres < res)
-      res = lres;
-    if (rres < res)
-      res = rres;
-    return res;
+  res = root->n;
+  lres = minValue(root->left);
+  rres = minValue(root->right);
+  if (lres < res)
+    res = lres;
+  if (rres < res)
+    res = rres;
+  return res;
 }
 
 /**
