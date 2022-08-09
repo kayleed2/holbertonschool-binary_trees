@@ -2,47 +2,25 @@
 #include "limits.h"
 
 /**
- * maxValue - Checks max value of tree
- * @root: pointer to root of tree
- * Return: Max Value
+ * bst - Checks max value of tree
+ * @tree: pointer to root of tree
+ * @min: min val
+ * @max: max val
+ * Return: recursive
  */
-int maxValue(const binary_tree_t *root)
+int bst(const binary_tree_t *tree, int min, int max)
 {
-int res, lres, rres;
-
-if (root == NULL)
-return (INT_MIN);
-
-res = root->n;
-lres = maxValue(root->left);
-rres = maxValue(root->right);
-if (lres > res)
-res = lres;
-if (rres > res)
-res = rres;
-return (res);
+if (tree == NULL)
+{
+    return (1);
 }
 
-/**
- * minValue - Checks min value of tree
- * @root: pointer to root of tree
- * Return: Min Value
- */
-int minValue(const binary_tree_t *root)
+if (tree->n >= min || tree->n >= max)
 {
-int res, lres, rres;
+    return (0);
+}
 
-if (root == NULL)
-return (INT_MAX);
-
-res = root->n;
-lres = minValue(root->left);
-rres = minValue(root->right);
-if (lres < res)
-res = lres;
-if (rres < res)
-res = rres;
-return (res);
+return (bst(tree->left, min, tree->n) && bst(tree->right, tree->n, max));
 }
 
 /**
@@ -55,22 +33,7 @@ int binary_tree_is_bst(const binary_tree_t *tree)
 {
 if (tree == NULL)
 {
-return (1);
+    return (0);
 }
-
-if (tree->left != NULL && maxValue(tree->left) > tree->n)
-{
-return (0);
-}
-
-if (tree->right != NULL && minValue(tree->right) < tree->n)
-{
-return (0);
-}
-
-if (!binary_tree_is_bst(tree->left) || !binary_tree_is_bst(tree->right))
-{
-return (0);
-}
-return (1);
+return (bst(tree, INT_MIN, INT_MAX));
 }
