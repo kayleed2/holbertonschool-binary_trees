@@ -45,7 +45,7 @@ int minValue(const binary_tree_t *root)
 }
 
 /**
- * binary_tree_sibling - Checks if binary tree is full
+ * binary_tree_is_bst - Checks if binary tree is bst
  * @tree: pointer to tree to find sibling
  * Return: Pointer to sibling tree or NULL
  */
@@ -53,7 +53,7 @@ int minValue(const binary_tree_t *root)
 int binary_tree_is_bst(const binary_tree_t *tree)
 {
     if (tree == NULL)
-    return(1);
+    return(0);
 
   if (tree->left!=NULL && maxValue(tree->left) > tree->n)
     return(0);
