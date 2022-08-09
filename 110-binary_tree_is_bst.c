@@ -12,10 +12,7 @@ int maxValue(const binary_tree_t *root)
     
     if (root == NULL)
         return INT_MIN;
- 
-    // Return maximum of 3 values:
-    // 1) Root's data 2) Max in Left Subtree
-    // 3) Max in right subtree
+
     res = root->n;
     lres = maxValue(root->left);
     rres = maxValue(root->right);
