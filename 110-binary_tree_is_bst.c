@@ -15,12 +15,12 @@ if (tree == NULL)
     return (1);
 }
 
-if (tree->n >= min || tree->n >= max)
+if (tree->n >= max || tree->n <= min)
 {
     return (0);
 }
 
-return (bst(tree->left, min, tree->n) && bst(tree->right, tree->n, max));
+return ((bst(tree->left, min, tree->n)) && (bst(tree->right, tree->n, max)));
 }
 
 /**
