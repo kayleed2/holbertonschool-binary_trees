@@ -32,35 +32,35 @@ return (bst_search(tree->right, value));
  */
 bst_t *bst_remove(bst_t *root, int value)
 {
-    bst_t *node;
-    bst_t *child;
+bst_t *node;
+bst_t *child;
 
-    node = bst_search(root, value);
+node = bst_search(root, value);
 
-    if (root == NULL || node == NULL)
-    {
-        return (NULL);
-    }
+if (root == NULL || node == NULL)
+{
+return (NULL);
+}
 
-    if (node->right == NULL && node->left != NULL)
-    {
-        child = node->left;
-    }
+if (node->right == NULL && node->left != NULL)
+{
+child = node->left;
+}
 
-    if (node->right != NULL && node->left == NULL)
-    {
-        child = node->right;
-    }
+if (node->right != NULL && node->left == NULL)
+{
+child = node->right;
+}
 
-    if (node->parent->left == node)
-    {
-        node->parent->left = child;
-    }
+if (node->parent->left == node)
+{
+node->parent->left = child;
+}
 
-    if (node->parent->right == node)
-    {
-        node->parent->right = child;
-    }
-    free(node);
-    return (root);
+if (node->parent->right == node)
+{
+node->parent->right = child;
+}
+free(node);
+return (root);
 }
