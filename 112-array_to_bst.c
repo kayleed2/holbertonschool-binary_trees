@@ -9,12 +9,12 @@
  */
 bst_t *array_to_bst(int *array, size_t size)
 {
-    size_t i;
-    binary_tree_t *parent = NULL;
-    
-    for (i = 0; i < size; i++)
-    {
-        bst_insert(&parent, array[i]);
-    }
-    return (parent);
+size_t i;
+binary_tree_t *parent = NULL;
+
+for (i = 0; i < size; i++)
+{
+bst_insert(&parent, array[i]);
+}
+return (parent);
 }
