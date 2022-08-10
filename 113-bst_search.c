@@ -9,7 +9,8 @@
  */
 bst_t *bst_search(const bst_t *tree, int value)
 {
-    bst_t *temp = tree;
+    const bst_t *temp = free;
+    
     if (temp == NULL)
     {
         return (NULL);
