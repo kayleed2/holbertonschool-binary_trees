@@ -19,7 +19,7 @@ return ((bst_t *)tree);
 }
 if (tree->n > value)
 {
-return bst_search(tree->left, value);
+return (bst_search(tree->left, value));
 }
-return bst_search(tree->right, value);
+return (bst_search(tree->right, value));
 }
