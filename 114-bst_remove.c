@@ -10,7 +10,6 @@
 bst_t *bst_remove(bst_t *root, int value)
 {
     bst_t *node;
-    bst_t *temp;
     bst_t *child;
 
     node = bst_search(root, value);
