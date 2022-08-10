@@ -13,6 +13,7 @@ bst_t *bst_insert(bst_t **tree, int value)
 
      if (tree == NULL)
     {
+        free(newnode);
         return (NULL);
     }
 
