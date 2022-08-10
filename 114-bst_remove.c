@@ -1,27 +1,14 @@
 #include "binary_trees.h"
 #include "limits.h"
 
-/**
- * bst_search - Searches bst for value
- * @tree: pointer to BST tree node
- * @value: value to search for
- * Return: Pointer to node with value or NULL
- */
-bst_t *bst_search(const bst_t *tree, int value)
+bst_t *minValueNode(bst_t *node)
 {
-if (tree == NULL)
-{
-return (NULL);
-}
-if (tree->n == value)
-{
-return ((bst_t *)tree);
-}
-if (tree->n > value)
-{
-return (bst_search(tree->left, value));
-}
-return (bst_search(tree->right, value));
+    bst_t *current = node;
+
+    while (current && current->left != NULL)
+        current = current->left;
+  
+    return current;
 }
 
 /**
@@ -32,35 +19,32 @@ return (bst_search(tree->right, value));
  */
 bst_t *bst_remove(bst_t *root, int value)
 {
-bst_t *node;
-bst_t *child;
+    bst_t *temp;
+    
+    if (value < root->n)
+        root->left = bst_remove(root->left, value);
 
-node = bst_search(root, value);
+    else if (value > root->n)
+        root->right = bst_remove(root->right, value);
+  
+    else {
 
-if (root == NULL || node == NULL)
-{
-return (NULL);
-}
-
-if (node->right == NULL && node->left != NULL)
-{
-child = node->left;
-}
-
-if (node->right != NULL && node->left == NULL)
-{
-child = node->right;
-}
-
-if (node->parent->left == node)
-{
-node->parent->left = child;
-}
-
-if (node->parent->right == node)
-{
-node->parent->right = child;
-}
-free(node);
-return (root);
+        if (root->left == NULL) {
+            temp = root->right;
+            free(root);
+            return temp;
+        }
+        else if (root->right == NULL) {
+            temp = root->left;
+            free(root);
+            return temp;
+        }
+  
+        temp = minValueNode(root->right);
+  
+        root->n = temp->n;
+  
+        root->right = bst_remove(root->right, temp->n);
+    }
+    return root;
 }
