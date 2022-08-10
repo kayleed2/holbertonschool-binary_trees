@@ -9,17 +9,18 @@
  */
 bst_t *bst_search(const bst_t *tree, int value)
 {
-    if (tree == NULL)
+    bst_t *temp = tree;
+    if (temp == NULL)
     {
         return (NULL);
     }
-    if (tree->n == value)
+    if (temp->n == value)
     {
-        return (tree);
+        return (temp);
     }
-    if (tree->n > value)
+    if (temp->n > value)
     {
-        return bst_search(tree->left, value);
+        return bst_search(temp->left, value);
     }
-    return bst_search(tree->right, value);
+    return bst_search(temp->right, value);
 }
