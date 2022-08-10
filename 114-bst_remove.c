@@ -56,6 +56,5 @@ bst_t *bst_remove(bst_t *root, int value)
     {
         node->parent->right = child;
     }
-    free(node);
     return (root);
 }
