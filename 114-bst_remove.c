@@ -37,6 +37,11 @@ bst_t *bst_remove(bst_t *root, int value)
 
     node = bst_search(root, value);
 
+    if (root == NULL || node == NULL)
+    {
+        return (NULL);
+    }
+
     if (node->right == NULL && node->left != NULL)
     {
         child = node->left;
@@ -56,5 +61,6 @@ bst_t *bst_remove(bst_t *root, int value)
     {
         node->parent->right = child;
     }
+    free(node);
     return (root);
 }
